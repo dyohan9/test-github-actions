@@ -1,28 +1,45 @@
-name: Publish Docker
-# Controls when the action will run. 
+name: CI to Docker hub 
+
 on:
-    # Triggers the workflow on push or pull request events but only for the main branch
-    push:
-        branches: [main]
-    pull_request:
-        branches: [main]
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@main
-    - name: Publish to Registry
-      uses: dyohan9/test-github-actions@main
-      with:
-        name: dyohan9/test-github-actions
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Push
-      run: |
-        echo "Build official Docker image ghcr.io/dyohan9/test-github-actions:pr-1"
-        docker build -f $GITHUB_WORKSPACE/Dockerfile -t ghcr.io/dyohan9/test-github-actions:pr-1 .
-        docker push ghcr.io/dyohan9/test-github-actions:pr-1
-      with:
-        name: dyohan9/test-github-actions
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+
+  push:
+
+    branches: [ main ]
+
+  steps:
+
+      -
+
+        name: Login to DockerHub
+
+        uses: docker/login-action@v1 
+
+        with:
+
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      -
+
+        name: Build and push
+
+        id: docker_build
+
+        uses: docker/build-push-action@v2
+
+        with:
+
+          context: ./
+
+          file: ./Dockerfile
+
+          push: true
+
+          tags: dyohan9/test-github-actions:latest
+
+      -
+
+        name: Image digest
+
+        run: echo ${{ steps.docker_build.outputs.digest }}
