@@ -22,3 +22,7 @@ jobs:
         echo "Build official Docker image ghcr.io/dyohan9/test-github-actions:pr-1"
         docker build -f $GITHUB_WORKSPACE/Dockerfile -t ghcr.io/dyohan9/test-github-actions:pr-1 .
         docker push ghcr.io/dyohan9/test-github-actions:pr-1
+       with:
+         name: dyohan9/test-github-actions
+         username: ${{ secrets.DOCKER_USERNAME }}
+         password: ${{ secrets.DOCKER_PASSWORD }}
