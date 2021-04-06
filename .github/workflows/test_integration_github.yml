@@ -7,7 +7,7 @@ name: upload-ag-images
 on:
   push:
     branches:
-      - maian
+      - main
 
 jobs:
   upload-base:
