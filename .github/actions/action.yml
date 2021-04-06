@@ -22,7 +22,7 @@ inputs:
     default: linux/amd64
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: '../../Dockerfile'
   # steps:
   # - name: Build image
   #   env:
