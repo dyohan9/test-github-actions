@@ -13,7 +13,6 @@ jobs:
     - uses: actions/checkout@main
     - name: Publish to Registry
       uses: dyohan9/test-github-actions@main
-      push: true
       with:
         name: dyohan9/test-github-actions
         username: ${{ secrets.DOCKER_USERNAME }}
