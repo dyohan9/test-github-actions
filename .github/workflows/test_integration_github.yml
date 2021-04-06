@@ -17,9 +17,7 @@ jobs:
         name: dyohan9/test-github-actions
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-
-    - name: Build Docker image for PRs
-        run: |
-          echo "Build official Docker image ghcr.io/dyohana9/test-github-actions:pr-1"
-          docker build -f $GITHUB_WORKSPACE/Dockerfile -t ghcr.io/dyohana9/test-github-actions:pr-1 .
-          docker push ghcr.io/dyohana9/test-github-actions:pr-1
+      run: |
+        echo "Build official Docker image ghcr.io/dyohana9/test-github-actions:pr-1"
+        docker build -f $GITHUB_WORKSPACE/Dockerfile -t ghcr.io/dyohana9/test-github-actions:pr-1 .
+        docker push ghcr.io/dyohana9/test-github-actions:pr-1
