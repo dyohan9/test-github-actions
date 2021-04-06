@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@main
     - name: Publish to Registry
-      uses: dyohan9/test-github-actions@maain
+      uses: dyohan9/test-github-actions@main
       with:
         name: dyohan9/test-github-actions
         username: ${{ secrets.DOCKER_USERNAME }}
