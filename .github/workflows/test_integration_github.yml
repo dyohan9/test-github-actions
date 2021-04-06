@@ -19,6 +19,6 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Push
       run: |
-        echo "Build official Docker image ghcr.io/dyohana9/test-github-actions:pr-1"
+        echo "Build official Docker image ghcr.io/dyohan9/test-github-actions:pr-1"
         docker build -f $GITHUB_WORKSPACE/Dockerfile -t ghcr.io/dyohana9/test-github-actions:pr-1 .
         docker push ghcr.io/dyohana9/test-github-actions:pr-1
