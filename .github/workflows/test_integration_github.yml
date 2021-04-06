@@ -31,7 +31,7 @@ jobs:
       - name: Build and push base Docker image
         uses: docker/build-push-action@v2
         with:
-          context: base
+          context: .
           tags: dyohan9/test-github-actions:latest
           push: true
 
